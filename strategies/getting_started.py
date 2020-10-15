@@ -1,3 +1,5 @@
+import os
+import sys
 import backtrader as bt
 from datetime import datetime
 
@@ -44,7 +46,7 @@ class TestStrategy(bt.Strategy):
 
 
 data = bt.feeds.YahooFinanceCSVData(
-    dataname=r'D:\home\projects\learn_backtrader\data\K.csv',
+    dataname=os.path.join(sys.path[0], r'../data/K.csv'),
     fromdate=datetime(1990, 1, 1),
     todate=datetime(2020, 1, 1),
     adjclose=True
