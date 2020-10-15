@@ -53,10 +53,10 @@ data = bt.feeds.YahooFinanceCSVData(
 )
 
 cerebro = bt.Cerebro()
-
-cerebro.broker.set_cash(1_000_000)
+start_cash = 1_000_000
+cerebro.broker.set_cash(start_cash)
 cerebro.adddata(data)
 cerebro.addstrategy(TestStrategy)
 cerebro.addsizer(bt.sizers.FixedSize, stake=10000)
 cerebro.run()
-print('End with %.2f' % cerebro.broker.getvalue())
+print('p/l $%.2f' % (cerebro.broker.getvalue() - start_cash))
